@@ -1,0 +1,11 @@
+databaseChangeLog:
+  -  changeSet:
+       id: create-patient-tables
+       author: abaloghbiro@protonmail.com
+       changes:
+         - sqlFile:
+             dbms: 'h2'
+             endDelimiter: \nGO
+             splitStatements: true
+             path: db/changelog/sql/create-patient-tables.sql
+             stripComments: true

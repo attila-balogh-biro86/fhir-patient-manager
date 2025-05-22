@@ -5,10 +5,6 @@ import ca.uhn.fhir.parser.IParser;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
-/**
- * Converts any HAPI‐FHIR R4 Resource subclass to/from its JSON
- * representation for storing in a jsonb column, as a raw String.
- */
 @Converter(autoApply = true)
 public class FhirJsonConverter
     implements AttributeConverter<org.hl7.fhir.r4.model.Resource,String> {

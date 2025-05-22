@@ -60,7 +60,7 @@ class PatientRepositoryTest {
     assertNotNull(patient);
 
     PatientEntity patientEntity = new PatientEntity();
-    patientEntity.setFhirPayload(patient);
+    patientEntity.setPatient(patient);
     patientEntity.setPatientFhirId(patient.getId());
     patientEntity.setPatientName(patient.getName().get(0).getNameAsSingleString());
 
@@ -84,18 +84,18 @@ class PatientRepositoryTest {
     assertNotNull(patient);
 
     PatientEntity patientEntity = new PatientEntity();
-    patientEntity.setFhirPayload(patient);
+    patientEntity.setPatient(patient);
     patientEntity.setPatientFhirId(patient.getId());
     patientEntity.setPatientName(patient.getName().get(0).getNameAsSingleString());
 
     PatientEntity savedEntity = patientRepository.save(patientEntity);
-    final String familyName = savedEntity.getFhirPayload().getName().get(0).getFamily();
+    final String familyName = savedEntity.getPatient().getName().get(0).getFamily();
     List<PatientEntity> retrievedEntity = patientRepository.findByFamilyName(patient.getName().get(0).getFamily());
 
     assertNotNull(savedEntity);
     assertNotNull(retrievedEntity);
     assertEquals(1, retrievedEntity.size());
-    assertEquals(familyName, retrievedEntity.get(0).getFhirPayload().getName().get(0).getFamily());
+    assertEquals(familyName, retrievedEntity.get(0).getPatient().getName().get(0).getFamily());
   }
 
 }

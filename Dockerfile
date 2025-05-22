@@ -23,4 +23,4 @@ USER ${USERNAME}
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/fhir-patient-manager.jar"]
 
 # Optionally, expose a port if your application listens on a specific port
-EXPOSE 8080
+EXPOSE 8089

@@ -15,24 +15,8 @@ public interface PatientRepository extends CrudRepository<PatientEntity, Long> {
   @Query(value = """
         SELECT *
           FROM patients p
-         WHERE p.fhir_payload->'identifier' @>
-               jsonb_build_array(
-                 jsonb_build_object(
-                   'system', :system,
-                   'value',  :value
-                 )
-               )
-      """, nativeQuery = true)
-  List<PatientEntity> findByIdentifierSystemAndValue(
-      @Param("system") String system,
-      @Param("value")  String value
-  );
-
-  @Query(value = """
-        SELECT *
-          FROM patients p
          WHERE jsonb_extract_path_text(
-                 p.fhir_payload,
+                 p.patient,
                  'name',   -- the JSON key for the array
                  '0',      -- index 0 (first element)
                  'family'  -- the field within that object
@@ -42,4 +26,6 @@ public interface PatientRepository extends CrudRepository<PatientEntity, Long> {
   List<PatientEntity> findByFamilyName(
       @Param("family") String family
   );
+
+  PatientEntity findByPatientFhirId(@Param("patientFhirId") String patientFhirId);
 }

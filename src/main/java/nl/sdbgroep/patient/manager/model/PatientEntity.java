@@ -34,5 +34,5 @@ public class PatientEntity {
   @JdbcTypeCode(SqlTypes.JSON)
   @Convert(converter = FhirJsonConverter.class)
   @Column(columnDefinition = "jsonb")
-  private Patient fhirPayload;
+  private Patient patient;
 }

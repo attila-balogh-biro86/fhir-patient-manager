@@ -32,7 +32,7 @@ public class FhirConfig {
     server.setResourceProviders(List.of(patientResourceProvider));
     server.registerInterceptor(new LoggingInterceptor());
 
-    ServletRegistrationBean<Servlet> servletRegistrationBean = new ServletRegistrationBean<Servlet>(server, "/fhir/*");
+    ServletRegistrationBean<Servlet> servletRegistrationBean = new ServletRegistrationBean<Servlet>(server, "/fhir/r4/*");
     servletRegistrationBean.setLoadOnStartup(1);
     return servletRegistrationBean;
   }

@@ -27,7 +27,7 @@ spring:
       leak-detection-threshold: 2000
 
 server:
-  port: 8089
+  port: 8087
 
 logging:
   level:

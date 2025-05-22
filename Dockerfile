@@ -1,7 +1,6 @@
 FROM eclipse-temurin:17.0.12_7-jre-alpine AS builder
 
-ENV USERNAME="littlebig"
-ENV SPRING_PROFILES_ACTIVE=prod
+ENV USERNAME="fhir"
 ENV JAVA_OPTS=""
 
 # Set the working directory inside the container

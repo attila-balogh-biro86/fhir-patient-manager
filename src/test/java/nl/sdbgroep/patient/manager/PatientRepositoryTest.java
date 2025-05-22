@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -26,6 +27,10 @@ import nl.sdbgroep.patient.manager.model.PatientEntity;
 
 @Testcontainers
 @DataJpaTest
+@TestPropertySource(properties = {
+    "DATABASE_HOST=localhost",
+    "DATABASE_PORT=15433"
+})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class PatientRepositoryTest {
 
@@ -34,9 +39,9 @@ class PatientRepositoryTest {
 
   @Container
   static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15")
-      .withDatabaseName("linky")
-      .withUsername("test")
-      .withPassword("test");
+      .withDatabaseName("fhir")
+      .withUsername("fhir")
+      .withPassword("fhir");
 
   @DynamicPropertySource
   static void overrideProps(DynamicPropertyRegistry registry) {

@@ -1,0 +1,9 @@
+services:
+  database:
+    image: 'postgres:15.2'
+    ports:
+      - '15433:5432'
+    environment:
+      - 'POSTGRES_USER=fhir'
+      - 'POSTGRES_DB=fhir'
+      - 'POSTGRES_PASSWORD=fhir'

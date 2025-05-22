@@ -1,0 +1,40 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  h2:
+    console:
+      path: /h2-console
+      settings.trace: false
+      settings.web-allow-others: false
+  mvc:
+    servlet:
+      path: /api
+  application:
+    name: fhir-patient-manager
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:15433/fhir
+    username: fhir
+    password: fhir
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 20000
+      max-lifetime: 1800000
+      pool-name: PostgresHikariCP
+      connection-test-query: SELECT 1
+      leak-detection-threshold: 2000
+
+server:
+  port: 8089
+
+logging:
+  level:
+    web: error
+    nl.sdbgroep: debug
